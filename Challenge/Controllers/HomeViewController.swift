@@ -8,12 +8,15 @@
 
 import UIKit
 import Alamofire
-import SwiftyJSON
+import ObjectMapper
+import SDWebImage
 
 class HomeViewController: UITableViewController {
 
+    // MARK: Properties
+    
     @IBOutlet var tblProducts: UITableView!
-    var products = [[String:AnyObject]]() // array of products
+    var products:[Product] = []     // array of products
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +28,7 @@ class HomeViewController: UITableViewController {
         let baseURL = "https://raw.githubusercontent.com/abraaoan/iOS-NeemuChallenge/master/challenge.json"
         Alamofire.request(.GET, baseURL).responseJSON { (responseData) -> Void in
             if ((responseData.result.value) != nil) {
-                let resJson = JSON(responseData.result.value!)
-                
-                if let productsData = resJson["result"]["products"].arrayObject {
-                    self.products = productsData as! [[String:AnyObject]]
-                }
-                
-                print(self.products)
-                
+                self.products = Mapper<Product>().mapArray(responseData.result.value!["result"]!!["products"])!
                 if (self.products.count > 0) {
                     self.tblProducts.reloadData()
                 }
@@ -42,7 +38,6 @@ class HomeViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -61,24 +56,41 @@ class HomeViewController: UITableViewController {
         
         return headerCell
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return 90.0;
+    }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath) as! ProductCell
         
-        var dict = products[indexPath.row]
-        cell.textLabel?.text = dict["name"] as? String
+        let product = products[indexPath.row]
+        let urlPhoto = NSURL(string: product.imageUrl!)
+        cell.imgPhoto.sd_setImageWithURL(urlPhoto)
+        //cell.imgPhoto.sd_setImageWithURL(urlPhoto, placeholderImage: UIImage(named: "defaultPhoto.png"))
+        cell.lblName.text = product.name
+        cell.lblPrice.attributedText = convertPriceText(product.price!, lastPrice: product.lastPrice!)
 
         return cell
     }
+    
+    private func convertPriceText(currentPrice: String, lastPrice: String) -> NSAttributedString {
+        let priceText = lastPrice + " por " + currentPrice
+        let attrString: NSMutableAttributedString =  NSMutableAttributedString(string: priceText)
+        attrString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, lastPrice.characters.count))
+        
+        return attrString
+    }
  
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "segueProductDetail") {
+            let indexPath = self.tblProducts.indexPathForSelectedRow!
+            let destViewController = segue.destinationViewController as! ProductDetailViewController
+            destViewController.product = self.products[indexPath.row]
+        }
     }
-    */
 
 }

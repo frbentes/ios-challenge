@@ -23,18 +23,18 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajk-Hy-zqZ">
-                                            <rect key="frame" x="12" y="12" width="240" height="19"/>
+                                            <rect key="frame" x="15" y="12" width="240" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="240" id="TTP-Sk-uyJ"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="ajk-Hy-zqZ" firstAttribute="centerY" secondItem="Cky-TC-jh3" secondAttribute="centerY" id="4lr-Gb-85W"/>
-                                        <constraint firstItem="ajk-Hy-zqZ" firstAttribute="leading" secondItem="Cky-TC-jh3" secondAttribute="leadingMargin" constant="4" id="hQf-bW-Dgt"/>
+                                        <constraint firstItem="ajk-Hy-zqZ" firstAttribute="leading" secondItem="Cky-TC-jh3" secondAttribute="leadingMargin" constant="7" id="hQf-bW-Dgt"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.31764705882352939" green="0.40000000000000002" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
@@ -42,22 +42,36 @@
                                     <outlet property="lblHeader" destination="ajk-Hy-zqZ" id="TVu-Su-OyP"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductCell" textLabel="34Q-FE-poM" style="IBUITableViewCellStyleDefault" id="dCw-qP-857">
-                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductCell" rowHeight="90" id="dCw-qP-857" customClass="ProductCell" customModule="Challenge" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="136" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dCw-qP-857" id="xq4-dO-0o4">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="34Q-FE-poM">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Uncharted 4 : A Thief's End-PS4" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="240" translatesAutoresizingMaskIntoConstraints="NO" id="cDT-OI-Lfq">
+                                            <rect key="frame" x="90" y="10" width="240" height="44"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="0.22352941176470587" green="0.22352941176470587" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="R$ 199,99 por R$ 245,99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="240" translatesAutoresizingMaskIntoConstraints="NO" id="8Zn-iN-dmL">
+                                            <rect key="frame" x="90" y="58" width="240" height="21"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cMw-0m-rrO">
+                                            <rect key="frame" x="8" y="5" width="75" height="80"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imgPhoto" destination="cMw-0m-rrO" id="GvX-Hy-r5G"/>
+                                    <outlet property="lblName" destination="cDT-OI-Lfq" id="jai-6f-gs4"/>
+                                    <outlet property="lblPrice" destination="8Zn-iN-dmL" id="op4-G6-OWm"/>
+                                    <segue destination="Cmc-gL-LzN" kind="show" identifier="segueProductDetail" id="XCX-Ih-mg6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -73,6 +87,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g0n-Fu-UXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1240" y="1112"/>
+        </scene>
+        <!--Produto-->
+        <scene sceneID="8rX-Xt-TJ6">
+            <objects>
+                <viewController storyboardIdentifier="ProductDetailID" id="Cmc-gL-LzN" customClass="ProductDetailViewController" customModule="Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IAX-jJ-nlc"/>
+                        <viewControllerLayoutGuide type="bottom" id="ABv-i6-bTl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NE7-jH-pi8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2WM-Ht-r5I">
+                                <rect key="frame" x="20" y="401" width="485" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Produto" id="j2F-gH-r5g"/>
+                    <connections>
+                        <outlet property="lblName" destination="2WM-Ht-r5I" id="JcQ-20-AZ4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gYR-Q1-Xqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2005" y="1112"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9kj-hY-ZIw">
