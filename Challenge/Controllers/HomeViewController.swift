@@ -46,7 +46,7 @@ class HomeViewController: UITableViewController {
     
     func showLoading() {
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        hud.labelText = "Loading..."
+        hud.labelText = "Carregando..."
     }
     
     func hideLoading() {
