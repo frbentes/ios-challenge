@@ -11,6 +11,8 @@ import ObjectMapper
 
 class Product: Mappable {
     
+    // MARK: Properties
+    
     var name: String?
     var link: String?
     var imageUrl: String?

@@ -23,6 +23,7 @@
 		46B3E38F1D41679E00796E3E /* filledStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B3E38E1D41679E00796E3E /* filledStar.png */; };
 		46B3E3911D4167AA00796E3E /* emptyHeart.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B3E3901D4167AA00796E3E /* emptyHeart.png */; };
 		46B3E3931D4167B000796E3E /* shareAction.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B3E3921D4167B000796E3E /* shareAction.png */; };
+		46B3E3971D41EE4700796E3E /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B3E3961D41EE4700796E3E /* StringUtils.swift */; };
 		46D961D01D3FD888009740F2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D961CF1D3FD888009740F2 /* HomeViewController.swift */; };
 		591CB0F542419B4C936D36BA /* Pods_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F311BF8C1813877FE47D8C /* Pods_Challenge.framework */; };
 		AB18124AFDC24DD01B7A6911 /* Pods_ChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 068E20E4AEEF0B0F5FFBABC7 /* Pods_ChallengeUITests.framework */; };
@@ -72,6 +73,7 @@
 		46B3E38E1D41679E00796E3E /* filledStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filledStar.png; sourceTree = "<group>"; };
 		46B3E3901D4167AA00796E3E /* emptyHeart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emptyHeart.png; sourceTree = "<group>"; };
 		46B3E3921D4167B000796E3E /* shareAction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareAction.png; sourceTree = "<group>"; };
+		46B3E3961D41EE4700796E3E /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		46D961CF1D3FD888009740F2 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		79DED417C1D67DDC103FAED5 /* Pods-ChallengeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChallengeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChallengeUITests/Pods-ChallengeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E4CFD7B4DA73EA08A720B38 /* Pods-Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-Challenge/Pods-Challenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				46D961CE1D3FD82C009740F2 /* Controllers */,
 				46B3E38B1D41677F00796E3E /* Images */,
 				4670C4BC1D3F2900006F738F /* AppDelegate.swift */,
+				46B3E3961D41EE4700796E3E /* StringUtils.swift */,
 				4670C4C01D3F2900006F738F /* Main.storyboard */,
 				4670C4C31D3F2900006F738F /* Assets.xcassets */,
 				4670C4C51D3F2900006F738F /* LaunchScreen.storyboard */,
@@ -497,6 +500,7 @@
 				4670C4BD1D3F2900006F738F /* AppDelegate.swift in Sources */,
 				46B3E36E1D400F6C00796E3E /* ProductDetailViewController.swift in Sources */,
 				46B3E3741D403B0D00796E3E /* Product.swift in Sources */,
+				46B3E3971D41EE4700796E3E /* StringUtils.swift in Sources */,
 				46B3E3881D40914E00796E3E /* ProductCell.swift in Sources */,
 				46B3E36B1D3FE56900796E3E /* HeaderCell.swift in Sources */,
 				46D961D01D3FD888009740F2 /* HomeViewController.swift in Sources */,

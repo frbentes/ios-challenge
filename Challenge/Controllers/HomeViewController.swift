@@ -10,34 +10,47 @@ import UIKit
 import Alamofire
 import ObjectMapper
 import SDWebImage
+import MBProgressHUD
 
 class HomeViewController: UITableViewController {
 
     // MARK: Properties
     
     @IBOutlet var tblProducts: UITableView!
-    var products:[Product] = []     // array of products
+    
+    var products: [Product] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.loadProducts()
+        // no empty cells at the end of the table
+        tblProducts.tableFooterView = UIView()
+        
+        // Load the data
+        loadProducts()
     }
     
-    private func loadProducts() {
+    func loadProducts() {
         let baseURL = "https://raw.githubusercontent.com/abraaoan/iOS-NeemuChallenge/master/challenge.json"
+        showLoading()
         Alamofire.request(.GET, baseURL).responseJSON { (responseData) -> Void in
-            if ((responseData.result.value) != nil) {
+            self.hideLoading()
+            if responseData.result.value != nil {
                 self.products = Mapper<Product>().mapArray(responseData.result.value!["result"]!!["products"])!
-                if (self.products.count > 0) {
+                if self.products.count > 0 {
                     self.tblProducts.reloadData()
                 }
             }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    func showLoading() {
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "Loading..."
+    }
+    
+    func hideLoading() {
+        MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
     }
 
     // MARK: - Table view data source
@@ -57,39 +70,36 @@ class HomeViewController: UITableViewController {
         return headerCell
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
-    {
+    // Override to support custom table view cell height
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 90.0;
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath) as! ProductCell
         
+        // Fetches the appropriate product for the data source layout
         let product = products[indexPath.row]
-        let urlPhoto = NSURL(string: product.imageUrl!)
-        cell.imgPhoto.sd_setImageWithURL(urlPhoto)
-        //cell.imgPhoto.sd_setImageWithURL(urlPhoto, placeholderImage: UIImage(named: "defaultPhoto.png"))
         cell.lblName.text = product.name
-        cell.lblPrice.attributedText = convertPriceText(product.price!, lastPrice: product.lastPrice!)
+        
+        // load photo from url
+        let urlPhoto = NSURL(string: product.imageUrl!)
+        cell.imgPhoto.sd_setImageWithURL(urlPhoto, placeholderImage: UIImage(named: "defaultPhoto.png"))
+        
+        // format text of prices label
+        let priceText = product.lastPrice! + " por " + product.price!
+        cell.lblPrice.attributedText = StringUtils.strikeSubText(priceText, length: product.lastPrice!.characters.count)
 
         return cell
-    }
-    
-    private func convertPriceText(currentPrice: String, lastPrice: String) -> NSAttributedString {
-        let priceText = lastPrice + " por " + currentPrice
-        let attrString: NSMutableAttributedString =  NSMutableAttributedString(string: priceText)
-        attrString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, lastPrice.characters.count))
-        
-        return attrString
     }
  
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "segueProductDetail") {
-            let indexPath = self.tblProducts.indexPathForSelectedRow!
+        if segue.identifier == "segueProductDetail" {
+            let indexPath = tblProducts.indexPathForSelectedRow!
             let destViewController = segue.destinationViewController as! ProductDetailViewController
-            destViewController.product = self.products[indexPath.row]
+            destViewController.product = products[indexPath.row]
         }
     }
 
