@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class StringUtils {
+open class StringUtils {
     
     ///
     /// Formats a Swift string to strike through its entire text
@@ -17,7 +17,7 @@ public class StringUtils {
     ///
     /// - Returns: NSAttributedString
     ///
-    public static func strikeText(text: String) -> NSAttributedString {
+    open static func strikeText(_ text: String) -> NSAttributedString {
         let attrString: NSMutableAttributedString = NSMutableAttributedString(string:text)
         attrString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, text.characters.count))
         
@@ -32,7 +32,7 @@ public class StringUtils {
     ///
     /// - Returns: NSAttributedString
     ///
-    public static func strikeSubText(text: String, length: Int) -> NSAttributedString {
+    open static func strikeSubText(_ text: String, length: Int) -> NSAttributedString {
         let attrString: NSMutableAttributedString = NSMutableAttributedString(string: text)
         attrString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, length))
         

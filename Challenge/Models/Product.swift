@@ -21,7 +21,7 @@ class Product: Mappable {
     var lastPrice: String?
     var description: String?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         
     }
     

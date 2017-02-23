@@ -41,13 +41,13 @@ class ProductDetailViewController: UIViewController {
         txtDescription.text = product?.description
         
         // load photo
-        let urlImage = NSURL(string: (product?.imageUrl)!)
-        imgPhoto.sd_setImageWithURL(urlImage, placeholderImage: UIImage(named: "defaultPhoto.png"))
+        let urlImage = URL(string: (product?.imageUrl)!)
+        imgPhoto.sd_setImage(with: urlImage, placeholderImage: UIImage(named: "defaultPhoto.png"))
     }
     
-    @IBAction func goToStore(sender: AnyObject) {
-        let productUrl = NSURL(string: (product?.link)!)
-        UIApplication.sharedApplication().openURL(productUrl!)
+    @IBAction func goToStore(_ sender: AnyObject) {
+        let productUrl = URL(string: (product?.link)!)
+        UIApplication.shared.openURL(productUrl!)
     }
 
 }
